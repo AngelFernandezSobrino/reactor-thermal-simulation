@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "reactor-thermal-simulation"
+version = "0.1.0"
+description = ""
+authors = ["Ángel Fernández Sobrino <fernandezsobrinoangel@gmail.com>"]
+readme = "README.md"
+packages = [{include = "reactor_thermal_simulation"}]
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.13"
+mypy = "^1.6.1"
+ipykernel = "^6.26.0"
+numpy = "^1.26.1"
+matplotlib = "^3.8.1"
+ipympl = "^0.9.3"
+iapws = "^1.5.3"
+perfplot = "^0.10.2"
+ray = "^2.8.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
