@@ -16,6 +16,7 @@ ipympl = "^0.9.3"
 iapws = "^1.5.3"
 perfplot = "^0.10.2"
 ray = "^2.8.0"
+openpyxl = "^3.1.2"
 
 
 [build-system]

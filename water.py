@@ -1,6 +1,9 @@
 import math
-import iapws
 import numpy as np
+
+import iapws  # type: ignore
+import numpy as np
+from typing import List
 
 class Water:
 
@@ -9,11 +12,11 @@ class Water:
     linspace_ammount: int = 91
     linspace_step: float = (linspace_max - linspace_min) / (linspace_ammount - 1)
     
-    temperature: float = np.linspace(linspace_min, linspace_max, linspace_ammount) # degC
-    rho_lt = []
-    viscosity_lt = []
-    k_lookuptable = []
-    cp_lookuptable = []
+    temperature: float = np.linspace(linspace_min, linspace_max, linspace_ammount) # type: ignore
+    rho_lt: List[float] = []
+    viscosity_lt: List[float] = []
+    k_lookuptable: List[float] = []
+    cp_lookuptable: List[float] = []
 
     pressure = 0.1 # MPa
 
@@ -48,21 +51,21 @@ class Water:
 
     @classmethod
     def rho(cls, temperature_degC: float) -> float:
-        #return 996.0
+        # return 980.0
         return cls.rho_lt[math.trunc((temperature_degC)/cls.linspace_step)]
     
     @classmethod
-    def viscosity(cls, temperature_degC: float) -> float:
+    def mu(cls, temperature_degC: float) -> float:
         return cls.viscosity_lt[math.trunc((temperature_degC)/cls.linspace_step)]
     
     @classmethod
     def k(cls, temperature_degC: float) -> float:
+        # return 0.63
         return cls.k_lookuptable[math.trunc((temperature_degC - cls.linspace_min)/cls.linspace_step)]
-
 
     @classmethod
     def cp(cls, temperature_degC: float) -> float:
-        #return 4180.0
+        # return 4190.0
         return cls.cp_lookuptable[math.trunc((temperature_degC - cls.linspace_min)/cls.linspace_step)]
 
 Water.init_lookup_tables()
@@ -77,7 +80,7 @@ if __name__ == "__main__":
     figure_default_size[0] = 20
     figure_water_data = plt.figure(figsize=figure_default_size)
 
-    axes_density_data, axes_viscosity_data, axes_thermal_conductivity_data, axes_specific_heat_capacity_data = figure_water_data.subplots(1, 4)
+    axes_density_data, axes_viscosity_data, axes_thermal_conductivity_data, axes_specific_heat_capacity_data = figure_water_data.subplots(1, 4) # type: ignore
 
     axes_density_data.plot(Water.temperature, Water.rho_lt)
     axes_density_data.set_xlabel('Temperature [degC]')
