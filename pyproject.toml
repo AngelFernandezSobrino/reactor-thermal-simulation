@@ -17,6 +17,10 @@ iapws = "^1.5.3"
 perfplot = "^0.10.2"
 ray = "^2.8.0"
 openpyxl = "^3.1.2"
+pyfluids = "^2.6.0"
+pyromat = "^2.2.4"
+slycot = "^0.5.4"
+control = "^0.9.4"
 
 
 [build-system]
