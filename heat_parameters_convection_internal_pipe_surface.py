@@ -48,7 +48,7 @@ class ForcedConvectionInnerPipe:
         self.mass_rate_linspace: float = np.linspace(self.mass_rate_linspace_min, self.mass_rate_linspace_max, self.mass_rate_linspace_ammount)  # type: ignore
 
         self.convection_coeficient_lookuptable = np.zeros(
-            shape=(self.mass_rate_linspace_ammount, self.temperature_linspace_ammount)
+            shape=(self.mass_rate_linspace_ammount, self.temperature_linspace_ammount), dtype=np.float128
         )
 
         self.radius = pipe_radius
@@ -65,7 +65,7 @@ class ForcedConvectionInnerPipe:
     def init_lookup_tables(self):
         for temperature_index, temperature in enumerate(self.temperature_linspace):
             for mass_rate_index, mass_rate in enumerate(self.mass_rate_linspace):
-                print(temperature, mass_rate)
+                # print(temperature, mass_rate)
                 self.convection_coeficient_lookuptable[mass_rate_index][
                     temperature_index
                 ] = self.calc_convection_coeficient(
